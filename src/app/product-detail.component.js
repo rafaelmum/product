@@ -10,9 +10,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var product_1 = require("./product");
+var shopping_cart_service_1 = require("./shopping-cart.service");
 var ProductDetailComponent = (function () {
-    function ProductDetailComponent() {
+    function ProductDetailComponent(shoppingCartService) {
+        this.shoppingCartService = shoppingCartService;
     }
+    ProductDetailComponent.prototype.putOnCart = function () {
+        this.shoppingCartService.addItem(this.product);
+    };
     return ProductDetailComponent;
 }());
 __decorate([
@@ -22,8 +27,10 @@ __decorate([
 ProductDetailComponent = __decorate([
     core_1.Component({
         selector: 'product-detail',
-        template: "\n    <div *ngIf=\"product\">\n        <h2>{{product.name}} details!</h2>\n        <div><label>id: </label>{{product.id}}</div>\n        <div>\n        <label>name: </label>\n        <input [(ngModel)]=\"product.name\" placeholder=\"name\">\n        </div>\n    </div>\n    "
-    })
+        providers: [shopping_cart_service_1.ShoppingCartService],
+        template: "\n    <div *ngIf=\"product\">\n        <h2>{{product.name}} details!</h2>\n        <div><label>id: </label>{{product.id}}</div>\n        <div>\n        <label>name: </label>\n        <input [(ngModel)]=\"product.name\" placeholder=\"name\">\n        <button (click)=\"putOnCart()\">Put on Cart</button>\n        </div>\n    </div>\n    "
+    }),
+    __metadata("design:paramtypes", [shopping_cart_service_1.ShoppingCartService])
 ], ProductDetailComponent);
 exports.ProductDetailComponent = ProductDetailComponent;
 //# sourceMappingURL=product-detail.component.js.map
