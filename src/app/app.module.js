@@ -9,8 +9,10 @@ var core_1 = require("@angular/core");
 var platform_browser_1 = require("@angular/platform-browser");
 var forms_1 = require("@angular/forms");
 var shopping_cart_module_1 = require("./shopping-cart.module");
+var forms_2 = require("@angular/forms");
 var app_component_1 = require("./app.component");
 var product_detail_component_1 = require("./product-detail.component");
+var product_form_component_1 = require("./product-form.component");
 var AppModule = (function () {
     function AppModule() {
     }
@@ -18,8 +20,8 @@ var AppModule = (function () {
 }());
 AppModule = __decorate([
     core_1.NgModule({
-        imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, shopping_cart_module_1.ShoppingCartModule],
-        declarations: [app_component_1.AppComponent, product_detail_component_1.ProductDetailComponent],
+        imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, shopping_cart_module_1.ShoppingCartModule, forms_2.ReactiveFormsModule],
+        declarations: [app_component_1.AppComponent, product_detail_component_1.ProductDetailComponent, product_form_component_1.ProductFormComponent],
         bootstrap: [app_component_1.AppComponent]
     })
 ], AppModule);

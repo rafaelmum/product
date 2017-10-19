@@ -1,18 +1,6 @@
 import { Component } from '@angular/core';
 import { Product } from './product';
-
-const PRODUCTS: Product[] = [
-  { id: 11, name: 'Sandals', price: 5.00 },
-  { id: 12, name: 'Ball', price: 3.00 },
-  { id: 13, name: 'Shirt', price: 15.00 },
-  { id: 14, name: 'Shoes', price: 40.00 },
-  { id: 15, name: 'Mouse', price: 3.00 },
-  { id: 16, name: 'Keyboard', price: 5.00 },
-  { id: 17, name: 'Laptop', price: 300.00 },
-  { id: 18, name: 'TV', price: 400.00 },
-  { id: 19, name: 'Car', price: 15000.00 },
-  { id: 20, name: 'Coffee Machine', price: 8.00 }
-];
+import { PRODUCTS } from './mock-products';
 
 @Component({
   selector: 'my-app',
@@ -27,6 +15,8 @@ const PRODUCTS: Product[] = [
     <product-detail [product]="selectedProduct"></product-detail>
     <shopping-cart *ngIf="showCart"></shopping-cart>
     <button (click)="showCartButton()">Cart</button>
+    <product-form *ngIf="showProductForm"></product-form>
+    <button (click)="showProductFormButton()">Add Product</button>
     `,
     styles: [`
     .selected {
@@ -83,6 +73,7 @@ export class AppComponent  {
   selectedProduct: Product;
   products = PRODUCTS;
   showCart: boolean = false;
+  showProductForm: boolean = false;
 
   onSelect(product: Product): void {
     this.selectedProduct = product;
@@ -90,5 +81,9 @@ export class AppComponent  {
 
   showCartButton() {
     this.showCart = !this.showCart;
+  }
+
+  showProductFormButton() {
+    this.showProductForm = !this.showProductForm;
   }
 }

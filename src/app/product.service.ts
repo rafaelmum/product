@@ -15,4 +15,8 @@ export class ProductService {
     //getProducts(): Promise<Product[]> {
         //return Promise.resolve(PRODUCTS);
     //}
+
+    addProduct(product: Product): void {
+        PRODUCTS.push(product);
+    }
 }

@@ -1,0 +1,24 @@
+<form [formGroup]="productAddForm" (ngSubmit)="submit()">
+  <div>
+    <label for="id">ID:</label>
+    <input type="text" id="id" formControlName="id">
+    <div *ngIf="id.touched && id.invalid">
+      ID is required or already exists
+    </div>
+  </div>
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" formControlName="name">
+    <div *ngIf="name.touched && name.invalid">
+      Name is required
+    </div>
+  </div>
+  <div>
+    <label for="price">Price:</label>
+    <input type="text" id="price" formControlName="price">
+    <div *ngIf="price.touched && price.invalid">
+      Price is required
+    </div>
+  </div>
+  <button type="submit">Create</button>
+</form>

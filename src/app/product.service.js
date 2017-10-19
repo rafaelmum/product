@@ -14,6 +14,13 @@ var ProductService = (function () {
     ProductService.prototype.getProducts = function () {
         return mock_products_1.PRODUCTS;
     };
+    // USING PROMISE.
+    //getProducts(): Promise<Product[]> {
+    //return Promise.resolve(PRODUCTS);
+    //}
+    ProductService.prototype.addProduct = function (product) {
+        mock_products_1.PRODUCTS.push(product);
+    };
     return ProductService;
 }());
 ProductService = __decorate([
