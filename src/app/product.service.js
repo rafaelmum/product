@@ -11,15 +11,19 @@ var ProductService = (function () {
     function ProductService() {
     }
     // USING SYNCHRONOUSLY/WITH OBSERVABLE.
-    ProductService.prototype.getProducts = function () {
-        return mock_products_1.PRODUCTS;
-    };
-    // USING PROMISE.
-    //getProducts(): Promise<Product[]> {
-    //return Promise.resolve(PRODUCTS);
+    //getProducts(): Product[] {
+    //return PRODUCTS;
     //}
+    // USING PROMISE.
+    ProductService.prototype.getProducts = function () {
+        return Promise.resolve(mock_products_1.PRODUCTS);
+    };
     ProductService.prototype.addProduct = function (product) {
         mock_products_1.PRODUCTS.push(product);
+    };
+    ProductService.prototype.getProduct = function (id) {
+        return this.getProducts()
+            .then(function (products) { return products.find(function (product) { return product.id === id; }); });
     };
     return ProductService;
 }());
